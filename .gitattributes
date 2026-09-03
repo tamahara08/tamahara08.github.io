@@ -1,2 +1,327 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tamahara — Handcrafted Art & Accessories</title>
+  <style>
+    :root {
+      --bg-color: #fcfbf9;
+      --card-bg: #ffffff;
+      --text-color: #2c2c2c;
+      --accent-color: #8c7a6b;
+      --border-color: #e2ded9;
+      --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --font-serif: "Georgia", "Times New Roman", serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-main);
+      line-height: 1.6;
+      padding: 0 20px 60px 20px;
+    }
+
+    header {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 50px 0 30px 0;
+      text-align: center;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    header h1 {
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 0.95rem;
+      color: var(--accent-color);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    nav {
+      margin-top: 20px;
+    }
+
+    nav a {
+      color: var(--text-color);
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent-color);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 40px auto;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 400;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    /* Collection Grid (Evermade Style) */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.04);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 280px;
+      background-color: #f3efe9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .card-content {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .card-title {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      margin-bottom: 6px;
+    }
+
+    .card-price {
+      color: var(--accent-color);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .card-desc {
+      font-size: 0.88rem;
+      color: #666;
+      margin-bottom: 18px;
+    }
+
+    .btn {
+      display: inline-block;
+      width: 100%;
+      padding: 12px 20px;
+      background-color: var(--text-color);
+      color: #ffffff;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn:hover {
+      background-color: var(--accent-color);
+    }
+
+    /* Order / Inquiry Form Section */
+    .order-section {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      padding: 40px;
+      border-radius: 4px;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .order-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .form-group label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+      color: #555;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 2px;
+      font-family: var(--font-main);
+      font-size: 0.95rem;
+      background-color: #faf9f7;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent-color);
+      background-color: #ffffff;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.8rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Tamahara</h1>
+    <p>Handcrafted Jewelry & Artisanal Goods</p>
+    <nav>
+      <a href="#collection">Collection</a>
+      <a href="#order">Place Order</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Collection Section -->
+    <section id="collection">
+      <h2 class="section-title">Featured Pieces</h2>
+      <div class="grid">
+        
+        <!-- Product 1 -->
+        <div class="card">
+          <div class="card-img">[ Brick Stitch Earrings ]</div>
+          <div class="card-content">
+            <h3 class="card-title">Hand-Beaded Fringe Earrings</h3>
+            <p class="card-price">¥6,500 / $45</p>
+            <p class="card-desc">Crafted with precision Miyuki seed beads using traditional brick stitch techniques.</p>
+            <a href="#order" class="btn">Order Custom Piece</a>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="card">
+          <div class="card-img">[ Needle-Felted Hat ]</div>
+          <div class="card-content">
+            <h3 class="card-title">Botanical Needle-Felted Hat</h3>
+            <p class="card-price">¥8,800 / $60</p>
+            <p class="card-desc">Hand-felted natural wool artwork featuring organic ginkgo leaf and floral motifs.</p>
+            <a href="#order" class="btn">Order Custom Piece</a>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="card">
+          <div class="card-img">[ Artisanal Accessory ]</div>
+          <div class="card-content">
+            <h3 class="card-title">Embroidered Tie & Brooch Set</h3>
+            <p class="card-price">¥5,200 / $35</p>
+            <p class="card-desc">Bespoke textile accessories featuring detailed nature-inspired needlework.</p>
+            <a href="#order" class="btn">Order Custom Piece</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Order Form Section -->
+    <section id="order">
+      <div class="order-section">
+        <h2 class="section-title" style="margin-bottom: 10px;">Place a Direct Order</h2>
+        <p style="text-align: center; font-size: 0.9rem; color: #666; margin-bottom: 30px;">
+          Select your item or request a custom bespoke commission below.
+        </p>
+
+        <form class="order-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Full Name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="email@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="product">Select Collection Item</label>
+            <select id="product" name="product" required>
+              <option value="" disabled selected>Select an option...</option>
+              <option value="Beaded Fringe Earrings">Hand-Beaded Fringe Earrings</option>
+              <option value="Needle-Felted Hat">Botanical Needle-Felted Hat</option>
+              <option value="Embroidered Brooch / Tie">Embroidered Tie & Brooch</option>
+              <option value="Custom Bespoke Request">Custom Bespoke Design</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="details">Customization / Order Details</label>
+            <textarea id="details" name="details" rows="4" placeholder="Specify preferred color combinations, sizing, or custom motifs..."></textarea>
+          </div>
+
+          <button type="submit" class="btn">Submit Order Request</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Tamahara. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
