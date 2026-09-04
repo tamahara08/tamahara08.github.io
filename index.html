@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <script>
+  if (window.location.hash.includes("recovery_token") || window.location.hash.includes("invite_token")) {
+    window.location.href = "/admin/" + window.location.hash;
+  }
+</script>  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tamahara — Handcrafted Art & Accessories</title>
   <style>
