@@ -1,6 +1,7 @@
-    backend:
+backend:
   name: git-gateway
   branch: main
+  site_url: https://tamahara.netlify.app
 
 media_folder: "images"
 public_folder: "/images"
