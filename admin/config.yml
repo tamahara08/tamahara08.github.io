@@ -1,36 +1,5 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: tamahara08/tamahara08.github.io
   branch: main
-  identity_url: "https://tamahara.netlify.app/.netlify/identity"
-  gateway_url: "https://tamahara.netlify.app/.netlify/git"
-
-media_folder: "images"
-public_folder: "/images"
-
-collections:
-  - name: "products"
-    label: "Products & Pieces"
-    folder: "_products"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - label: "Title"
-        name: "title"
-        widget: "string"
-      - label: "Price"
-        name: "price"
-        widget: "string"
-      - label: "Product Photo"
-        name: "image"
-        widget: "image"
-      - label: "Category"
-        name: "category"
-        widget: "select"
-        options: ["Beadwork", "Needle-Felting", "Accessories", "Art"]
-      - label: "Description"
-        name: "description"
-        widget: "text"
-      - label: "In Stock"
-        name: "in_stock"
-        widget: "boolean"
-        default: true
+  base_url: https://decap-oauth-provider.netlify.app
