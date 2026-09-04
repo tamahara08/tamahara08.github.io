@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: tamahara08/tamahara08.github.io
+  name: git-gateway
   branch: main
 
 media_folder: "images"
